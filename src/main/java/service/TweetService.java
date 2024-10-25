@@ -2,6 +2,7 @@ package service;
 
 import Entity.Tweet;
 import Entity.User;
+import database.Database;
 
 public class TweetService {
     public void showTweet(Tweet tweet) {
@@ -20,6 +21,16 @@ public class TweetService {
             }
         }
         return false;
+    }
+
+    public Tweet getTweetById(int id) {
+        for(int i=0; i< Database.tweetList.getIndex();i++){
+            Tweet tweet = Database.tweetList.getTweets(i);
+            if(tweet.getId() == id){
+                return tweet;
+            }
+        }
+        return null;
     }
 
 }
