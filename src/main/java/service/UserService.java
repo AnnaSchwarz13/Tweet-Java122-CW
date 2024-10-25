@@ -63,15 +63,5 @@ public class UserService {
         tweetCounter++;
     }
 
-    public TweetList getLoggedInUserTweets(){
-        TweetList userTweetList = new TweetList();
-        for(int i=0; i<tweetList.getIndex(); i++){
-            Tweet tweet=tweetList.getTweets(i);
-            if(tweet.getUser().getUsername() .equals(loggedInUser.getUsername()) ){
-                userTweetList.add(tweet);
-            }
 
-        }
-        return userTweetList;
-    }
 }
