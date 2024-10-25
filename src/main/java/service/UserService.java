@@ -12,7 +12,7 @@ import static database.Database.userList;
 public class UserService {
     private static int counter = 1;
     public static int tweetCounter = 1;
-    private Authentication auth;
+    private Authentication auth = new Authentication();
 
     public void userSignup(String firstName, String lastName, String userName, String password) {
 
@@ -25,7 +25,7 @@ public class UserService {
         signingUser.setId(counter);
         // Save to database
 
-        Database.userList.add(signingUser);
+        auth.addUserToDatabase(signingUser);
         counter++;
     }
 

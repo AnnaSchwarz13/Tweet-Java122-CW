@@ -31,9 +31,7 @@ public class Main {
             userInput = scanner.nextInt();
             loggedInUserMenu(userInput);
 
-
         }
-
 
     }
 
