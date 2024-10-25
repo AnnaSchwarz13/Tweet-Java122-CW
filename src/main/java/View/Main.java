@@ -1,6 +1,7 @@
 package View;
 
 import Entity.Tweet;
+import Entity.TweetList;
 import authentication.Authentication;
 import service.TweetService;
 import service.UserService;
@@ -30,7 +31,8 @@ public class Main {
                 System.out.println();
                 System.out.println("1.Post a new tweet");
                 System.out.println("2.View all tweets");
-                System.out.println("3.Log out");
+                System.out.println("3.View your tweets ");
+                System.out.println("4.Log out");
                 userInput = scanner.nextInt();
                 loggedInUserMenu(userInput);
 
@@ -83,7 +85,7 @@ public class Main {
             userService.addTweet(tweetText);
         } else if (input == 2) {
             twitterService.displayAllTweet();
-            if(tweetList.getIndex()>0) {
+            if (tweetList.getIndex() > 0) {
                 while (true) {
                     System.out.println("Please enter tweet's id to like \nif you don't wanna like anymore enter -1");
                     int id = scanner.nextInt();
@@ -96,7 +98,20 @@ public class Main {
                     }
                 }
             }
-        } else if (input == 3) {
+        }
+            else if(input == 3) {
+                TweetList userTweetList =tweetService.getLoggedInUserTweets();
+                if(userTweetList.getIndex()>0 ) {
+                    for(int i=0;i<userTweetList.getIndex();i++){
+                        tweetService.showTweet(userTweetList.getTweets(i));
+                        System.out.println("-----");
+                    }
+                }
+                else{
+                    System.out.println("You have no tweets yet");
+                }
+
+        } else if (input == 4) {
             userService.userLogout();
         }
     }
