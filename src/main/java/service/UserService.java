@@ -3,6 +3,8 @@ package service;
 import Entity.Tweet;
 import Entity.User;
 import database.Database;
+import authentication.Authentication;
+
 
 import static database.Database.loggedInUser;
 import static database.Database.userList;
@@ -10,6 +12,7 @@ import static database.Database.userList;
 
 public class UserService {
     private static int counter = 1;
+    private Authentication auth;
 
     public void userSignup(String firstName, String lastName, String userName, String password) {
 
@@ -38,7 +41,7 @@ public class UserService {
                 // Check password
                 if (checkingUser.getPassword().equals(password)) {
                     // Set the logged User
-                    Database.loggedInUser = checkingUser;
+                    auth.login(checkingUser);
 
                     System.out.println("User logged in successfully...");
                     return false;
@@ -51,7 +54,7 @@ public class UserService {
     }
 
     public void userLogout() {
-        loggedInUser = null;
+        auth.logout();
     }
 
     public void addTweet(String tweetText) {
