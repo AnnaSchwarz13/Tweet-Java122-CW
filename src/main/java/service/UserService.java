@@ -12,6 +12,7 @@ import static database.Database.userList;
 
 public class UserService {
     private static int counter = 1;
+    public static int tweetCounter = 1;
     private Authentication auth;
 
     public void userSignup(String firstName, String lastName, String userName, String password) {
@@ -58,7 +59,8 @@ public class UserService {
     }
 
     public void addTweet(String tweetText) {
-        Tweet tweet = new Tweet(tweetText, loggedInUser);
+        Tweet tweet = new Tweet(tweetText, loggedInUser , tweetCounter);
         Database.tweetList.add(tweet);
+        tweetCounter++;
     }
 }
