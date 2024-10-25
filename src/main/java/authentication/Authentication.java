@@ -7,12 +7,24 @@ import static database.Database.userList;
 
 public class Authentication {
 
+    public void addUserToDatabase(User user) {
+        userList.add(user);
+    }
+
     public void login(User signingUser) {
-        userList.add(signingUser);
+        if(loggedInUser ==null) {
+        loggedInUser =signingUser;
+        return;
+        }
+        System.out.println("you are not logged in");
     }
 
     public void logout() {
-        loggedInUser = null;
+        if(loggedInUser != null) {
+            loggedInUser = null;
+            return;
+        }
+        System.out.println("you are logged out");
     }
 
     public static boolean isUsernameNew(String username) {
