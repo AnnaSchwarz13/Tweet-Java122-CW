@@ -9,7 +9,7 @@ public class TweetService {
         int likes = tweet.getLikedUsers().getIndex();
         String authorName = tweet.getUser().getFirstName() + " " + tweet.getUser().getLastName();
         System.out.println("tweet's id: " + tweet.getId() + "\n"
-                + tweet.getText() + "\n" + authorName + "\n" + likes);
+                + tweet.getText() + "\n" + authorName + "\n Likes: " + likes);
 
     }
 

@@ -32,5 +32,6 @@ public class TwitterServiceImpl implements TwitterService {
             return;
         }
         tweet.getLikedUsers().add(loggedInUser);
+        System.out.println("Liked!");
     }
 }
