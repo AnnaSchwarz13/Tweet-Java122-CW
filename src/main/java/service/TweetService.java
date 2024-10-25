@@ -7,7 +7,8 @@ public class TweetService {
     public void showTweet(Tweet tweet) {
         int likes = tweet.getLikedUsers().getIndex();
         String authorName = tweet.getUser().getFirstName() +" "+ tweet.getUser().getLastName();
-        System.out.println(tweet.getText()+"\n"+authorName+"\n"+likes );
+        System.out.println("tweet's id: "+tweet.getId() +"\n"
+                +tweet.getText()+"\n"+authorName+"\n"+likes );
 
     }
 
