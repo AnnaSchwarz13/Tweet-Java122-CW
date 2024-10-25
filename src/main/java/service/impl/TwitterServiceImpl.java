@@ -1,7 +1,10 @@
 package service.impl;
 
+import Entity.Tweet;
 import service.TweetService;
 import service.TwitterService;
+
+import static database.Database.loggedInUser;
 import static database.Database.tweetList;
 
 public class TwitterServiceImpl implements TwitterService {
@@ -14,5 +17,14 @@ public class TwitterServiceImpl implements TwitterService {
             tweetService.showTweet(tweetList.getTweets(i));
             System.out.println("-------");
         }
+    }
+
+    @Override
+    public void likeTweet(Tweet tweet) {
+        if(tweetService.isUserLiked(tweet,loggedInUser)){
+            System.out.println("You already like this tweet");
+            return;
+        }
+        tweet.getLikedUsers().add(loggedInUser);
     }
 }
