@@ -1,12 +1,12 @@
 package service;
 
 import Entity.Tweet;
+import Entity.TweetList;
 import Entity.User;
 import authentication.Authentication;
 import database.Database;
 
-import static database.Database.loggedInUser;
-import static database.Database.userList;
+import static database.Database.*;
 
 
 public class UserService {
@@ -59,7 +59,19 @@ public class UserService {
 
     public void addTweet(String tweetText) {
         Tweet tweet = new Tweet(tweetText, loggedInUser, tweetCounter);
-        Database.tweetList.add(tweet);
+        tweetList.add(tweet);
         tweetCounter++;
+    }
+
+    public TweetList getLoggedInUserTweets(){
+        TweetList userTweetList = new TweetList();
+        for(int i=0; i<tweetList.getIndex(); i++){
+            Tweet tweet=tweetList.getTweets(i);
+            if(tweet.getUser().getUsername() .equals(loggedInUser.getUsername()) ){
+                userTweetList.add(tweet);
+            }
+
+        }
+        return userTweetList;
     }
 }
