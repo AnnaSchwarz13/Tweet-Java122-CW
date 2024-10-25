@@ -9,6 +9,7 @@ import service.impl.TwitterServiceImpl;
 import java.util.Scanner;
 
 import static database.Database.loggedInUser;
+import static database.Database.tweetList;
 
 public class Main {
 
@@ -79,15 +80,17 @@ public class Main {
             userService.addTweet(tweetText);
         } else if (input == 2) {
             twitterService.displayAllTweet();
-            while (true) {
-                System.out.println("Please enter tweet's id to like \nif you don't wanna like anymore enter -1");
-                int id = scanner.nextInt();
-                if (id == -1) {
-                    break;
-                }
-                Tweet userChoice = tweetService.getTweetById(id);
-                if (userChoice != null) {
-                    twitterService.likeTweet(userChoice);
+            if(tweetList.getIndex()>0) {
+                while (true) {
+                    System.out.println("Please enter tweet's id to like \nif you don't wanna like anymore enter -1");
+                    int id = scanner.nextInt();
+                    if (id == -1) {
+                        break;
+                    }
+                    Tweet userChoice = tweetService.getTweetById(id);
+                    if (userChoice != null) {
+                        twitterService.likeTweet(userChoice);
+                    }
                 }
             }
         } else if (input == 3) {

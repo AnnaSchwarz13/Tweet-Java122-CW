@@ -1,6 +1,7 @@
 package service.impl;
 
 import Entity.Tweet;
+import database.Database;
 import service.TweetService;
 import service.TwitterService;
 
@@ -12,12 +13,16 @@ public class TwitterServiceImpl implements TwitterService {
 
     @Override
     public void displayAllTweet() {
-        //show likes
-        //show author of tweet
-        for (int i = 0; i < tweetList.getIndex(); i++) {
-            tweetService.showTweet(tweetList.getTweets(i));
-            System.out.println("-------");
+        if(tweetList.getIndex()>0) {
+            //show likes
+            //show author of tweet
+            for (int i = 0; i < tweetList.getIndex(); i++) {
+                tweetService.showTweet(tweetList.getTweets(i));
+                System.out.println("-------");
+            }
+            return;
         }
+        System.out.println("There's no tweets");
     }
 
     @Override
