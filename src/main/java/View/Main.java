@@ -1,15 +1,20 @@
 package View;
 
+import Entity.Tweet;
 import authentication.Authentication;
+import service.TweetService;
 import service.UserService;
+import service.impl.TwitterServiceImpl;
 
 import java.util.Scanner;
 
 import static database.Database.loggedInUser;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
 
         int userInput;
         while (loggedInUser == null) {
@@ -22,6 +27,11 @@ public class Main {
         while (loggedInUser != null) {
             System.out.println("1.Post a new tweet");
             System.out.println("2.View all tweets");
+            System.out.println("3.Log out");
+            userInput = scanner.nextInt();
+            loggedInUserMenu(userInput);
+
+
         }
 
 
@@ -57,6 +67,33 @@ public class Main {
             password = scanner.next();
             userService.userLogin(username, password);
 
+        }
+    }
+
+    public static void loggedInUserMenu(int input) {
+        UserService userService = new UserService();
+        TwitterServiceImpl twitterService = new TwitterServiceImpl();
+        TweetService tweetService = new TweetService();
+        Scanner scanner = new Scanner(System.in);
+        if (input == 1) {
+            System.out.println("enter tweet's text");
+            String tweetText = scanner.nextLine();
+            userService.addTweet(tweetText);
+        } else if (input == 2) {
+            twitterService.displayAllTweet();
+            while (true) {
+                System.out.println("Please enter tweet's id to like \nif you don't wanna like anymore enter -1");
+                int id = scanner.nextInt();
+                if (id == -1) {
+                    break;
+                }
+                Tweet userChoice = tweetService.getTweetById(id);
+                if (userChoice != null) {
+                    twitterService.likeTweet(userChoice);
+                }
+            }
+        } else if (input == 3) {
+            userService.userLogout();
         }
     }
 }

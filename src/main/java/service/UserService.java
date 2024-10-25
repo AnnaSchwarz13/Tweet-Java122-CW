@@ -2,9 +2,8 @@ package service;
 
 import Entity.Tweet;
 import Entity.User;
-import database.Database;
 import authentication.Authentication;
-
+import database.Database;
 
 import static database.Database.loggedInUser;
 import static database.Database.userList;
@@ -59,7 +58,7 @@ public class UserService {
     }
 
     public void addTweet(String tweetText) {
-        Tweet tweet = new Tweet(tweetText, loggedInUser , tweetCounter);
+        Tweet tweet = new Tweet(tweetText, loggedInUser, tweetCounter);
         Database.tweetList.add(tweet);
         tweetCounter++;
     }

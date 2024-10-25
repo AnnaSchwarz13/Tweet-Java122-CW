@@ -1,6 +1,5 @@
 package Entity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TweetList {
@@ -19,14 +18,14 @@ public class TweetList {
         index++;
 
         if (index >= tweets.length)
-            tweets= Arrays.copyOf(tweets, tweets.length * 2);
+            tweets = Arrays.copyOf(tweets, tweets.length * 2);
     }
 
     public int getIndex() {
         return index;
     }
 
-    public Tweet  getTweets(int index) {
+    public Tweet getTweets(int index) {
         return tweets[index];
 
     }

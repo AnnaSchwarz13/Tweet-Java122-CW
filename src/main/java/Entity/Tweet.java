@@ -14,7 +14,7 @@ public class Tweet {
     private User user;
     private int id;
 
-    public Tweet(String text, User user , int id) {
+    public Tweet(String text, User user, int id) {
         this.text = text;
         this.user = user;
         this.likedUsers = new UserList();

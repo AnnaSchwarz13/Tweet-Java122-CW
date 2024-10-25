@@ -12,15 +12,15 @@ public class Authentication {
     }
 
     public void login(User signingUser) {
-        if(loggedInUser ==null) {
-        loggedInUser =signingUser;
-        return;
+        if (loggedInUser == null) {
+            loggedInUser = signingUser;
+            return;
         }
         System.out.println("you are not logged in");
     }
 
     public void logout() {
-        if(loggedInUser != null) {
+        if (loggedInUser != null) {
             loggedInUser = null;
             return;
         }

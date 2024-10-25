@@ -5,8 +5,6 @@ import java.util.Arrays;
 public class UserList {
 
 
-
-
     private User[] users;
     private int index;
 
@@ -30,6 +28,6 @@ public class UserList {
     public User getUsers(int index) {
         return users[index];
     }
-    }
+}
 
 
