@@ -1,17 +1,16 @@
 package service;
 
+import Entity.Tweet;
 import Entity.User;
 import database.Database;
-import org.w3c.dom.css.Counter;
-
-import java.util.Random;
 
 import static database.Database.loggedInUser;
 import static database.Database.userList;
 
 
 public class UserService {
-  private static int Counter;
+    private static int counter = 1;
+
     public void userSignup(String firstName, String lastName, String userName, String password) {
 
         // Create user
@@ -20,10 +19,11 @@ public class UserService {
         signingUser.setLastName(lastName);
         signingUser.setUsername(userName);
         signingUser.setPassword(password);
-
+        signingUser.setId(counter);
         // Save to database
 
         Database.userList.add(signingUser);
+        counter++;
     }
 
 
@@ -52,5 +52,10 @@ public class UserService {
 
     public void userLogout() {
         loggedInUser = null;
+    }
+
+    public void addTweet(String tweetText) {
+        Tweet tweet = new Tweet(tweetText, loggedInUser);
+        Database.tweetList.add(tweet);
     }
 }
