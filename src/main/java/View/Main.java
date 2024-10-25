@@ -18,22 +18,25 @@ public class Main {
 
 
         int userInput;
-        while (loggedInUser == null) {
-            System.out.println("\n\nDear user please choose a option from the menu : ");
-            System.out.println("1.Signup");
-            System.out.println("2.login");
-            userInput = scanner.nextInt();
-            userLoginMenu(userInput);
-        }
-        while (loggedInUser != null) {
-            System.out.println("1.Post a new tweet");
-            System.out.println("2.View all tweets");
-            System.out.println("3.Log out");
-            userInput = scanner.nextInt();
-            loggedInUserMenu(userInput);
+        while (true) {
+            while (loggedInUser == null) {
+                System.out.println("\n\nDear user please choose a option from the menu : ");
+                System.out.println("1.Signup");
+                System.out.println("2.login");
+                userInput = scanner.nextInt();
+                userLoginMenu(userInput);
+            }
+            while (loggedInUser != null) {
+                System.out.println();
+                System.out.println("1.Post a new tweet");
+                System.out.println("2.View all tweets");
+                System.out.println("3.Log out");
+                userInput = scanner.nextInt();
+                loggedInUserMenu(userInput);
+
+            }
 
         }
-
     }
 
     public static void userLoginMenu(int option) {
